@@ -5,4 +5,8 @@
     <RootNamespace>_2021_2c_Clase_3_MVC</RootNamespace>
   </PropertyGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\2021-2c-Clase-3-MVC.Servicios\2021-2c-Clase-3-MVC.Servicios.csproj" />
+  </ItemGroup>
+
 </Project>

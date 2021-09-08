@@ -1,0 +1,15 @@
+﻿@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@model List<_2021_2c_Clase_3_MVC.Servicios.Zodiaco.Signo>
+@{
+}
+
+<ul>
+    @foreach (var signo in Model)
+    {
+        <li><a href="@signo.Url">@signo.Nombre</a></li>
+    }
+</ul>
+
+
