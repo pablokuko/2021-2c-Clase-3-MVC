@@ -50,7 +50,8 @@ namespace _2021_2c_Clase_3_MVC
             {
                 endpoints.MapControllerRoute(
                     name: "default",
-                    pattern: "{controller=Home}/{action=Index}/{id?}");
+                    pattern: "{controller=Bienvenido}/{action=Index}/{id?}");
+
             });
         }
     }
