@@ -6,6 +6,10 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <PackageReference Include="Microsoft.AspNetCore.Mvc.Razor.RuntimeCompilation" Version="5.0.9" />
+  </ItemGroup>
+
+  <ItemGroup>
     <ProjectReference Include="..\2021-2c-Clase-3-MVC.Servicios\2021-2c-Clase-3-MVC.Servicios.csproj" />
   </ItemGroup>
 
