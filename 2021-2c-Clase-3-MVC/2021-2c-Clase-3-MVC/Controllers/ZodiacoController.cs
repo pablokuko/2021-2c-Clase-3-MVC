@@ -38,5 +38,58 @@ namespace _2021_2c_Clase_3_MVC.Controllers
 
             return Redirect("Index");
         }
+
+        [HttpGet]
+        public IActionResult NuevoConBindingAutomaticoInd()
+        {
+            return View();
+        }
+
+        [HttpPost]
+        public IActionResult NuevoConBindingAutomaticoInd(string Nombre, DateTime FechaInicio, DateTime FechaFin, string Url)
+        {
+            Signo signo = new Signo() { Nombre = Nombre, FechaFin = FechaFin, FechaInicio = FechaInicio, Url = Url };
+            try
+            {
+                SignosServicio.Agregar(signo);
+            }
+            catch (SignoExistenteException ex)
+            {
+                ViewBag.Mensaje = ex.Message;
+                return View(signo);
+            }
+
+            return Redirect("Index");
+        }
+
+
+        [HttpGet]
+        public IActionResult NuevoBindingManual()
+        {
+            return View();
+        }
+
+        [HttpPost]
+        public IActionResult NuevoBindingManualPost()
+        {
+            Signo signo = new Signo() 
+            {
+                Nombre = Request.Form["Nombre"], 
+                FechaFin = DateTime.Parse(Request.Form["FechaFin"]), 
+                FechaInicio = DateTime.Parse(Request.Form["FechaInicio"]), 
+                Url = Request.Form["Url"]
+            };
+            try
+            {
+                SignosServicio.Agregar(signo);
+            }
+            catch (SignoExistenteException ex)
+            {
+                ViewBag.Mensaje = ex.Message;
+                return View(signo);
+            }
+
+            return Redirect("Index");
+        }
     }
 }
