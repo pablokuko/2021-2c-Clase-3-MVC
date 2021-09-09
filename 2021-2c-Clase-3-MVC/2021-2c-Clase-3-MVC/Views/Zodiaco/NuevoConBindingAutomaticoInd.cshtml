@@ -1,0 +1,33 @@
+﻿@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@model _2021_2c_Clase_3_MVC.Servicios.Zodiaco.Signo
+@{
+}
+<h1>Agregar nuevo signo</h1>
+<form action="/Zodiaco/NuevoConBindingAutomaticoInd" method="post">
+
+    <div>
+        Nombre: <input type="text" name="Nombre" value="@Model?.Nombre" />
+    </div>
+    <div>
+        Fecha Inicio: <input type="date" name="FechaInicio" value="@Model?.FechaInicio" />
+    </div>
+    <div>
+        Fecha Fin:
+        <input type="date" name="FechaFin" value="@Model?.FechaFin" />
+    </div>
+    <div>
+        Url:
+        <input type="text" name="Url" value="@Model?.Url" />
+    </div>
+
+    @if (!string.IsNullOrEmpty(ViewBag.Mensaje))
+    {
+        <div>
+            <span class="text-danger">@ViewBag.Mensaje</span>
+        </div>
+    }
+
+    <input type="submit" name="Nuevo" value="Crear" />
+</form>
