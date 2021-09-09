@@ -12,6 +12,13 @@ Bienvenido al sitio!
      * Acuario
      * Piscis
 	 * etc
-1. crear una pagina **cual es mi signo **que responda a la siguiente url  
+1. crear una pagina **cual es mi signo **que responda a la siguiente url  **TAREA**
  - /zodiaco/cual-es-mi-signo/21/08
  indicando "Su signo es de LEO!" donde LEO es un link a la wikipedia del signo (ej: https://es.wikipedia.org/wiki/Leo_(constelaci%C3%B3n))
+1. crear una pagina **nuevo signo ** para agregar un nuevo signo del zodiaco
+ - /zodiaco/nuevo
+Nombre
+Fecha Inicio
+Fecha Fin
+Url
+1. Agregar en pagina /zodiaco un link para eliminar **TAREA**
