@@ -12,9 +12,31 @@ namespace _2021_2c_Clase_3_MVC.Controllers
     public class ZodiacoController : Controller
     {
         // GET: ZodiacoController
-        public ActionResult Index()
+        public IActionResult Index()
         {
             return View(SignosServicio.ObtenerTodosCronologicamente());
+        }
+
+        [HttpGet]
+        public IActionResult Nuevo()
+        {
+            return View();
+        }
+
+        [HttpPost]
+        public IActionResult Nuevo(Signo signo)
+        {
+            try
+            {
+                SignosServicio.Agregar(signo);
+            }
+            catch (SignoExistenteException ex)
+            {
+                ViewBag.Mensaje = ex.Message;
+                return View(signo);
+            }
+
+            return Redirect("Index");
         }
     }
 }

@@ -23,5 +23,15 @@ namespace _2021_2c_Clase_3_MVC.Servicios.Zodiaco
         {
             return Lista.OrderBy(o=> o.FechaInicio).ToList();
         }
+
+        public static void Agregar(Signo signo)
+        {
+            if (Lista.Any(o => string.Equals(o.Nombre?.Trim(), signo.Nombre?.Trim(), StringComparison.OrdinalIgnoreCase)))
+                throw new SignoExistenteException($"Ya existe un signo con el nombre {signo.Nombre}");
+
+            signo.Id = Lista.Max(o => o.Id) + 1;
+
+            Lista.Add(signo);
+        }
     }
 }
