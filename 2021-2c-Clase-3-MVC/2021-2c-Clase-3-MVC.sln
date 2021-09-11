@@ -3,9 +3,9 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 16
 VisualStudioVersion = 16.0.31229.75
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "2021-2c-Clase-3-MVC", "2021-2c-Clase-3-MVC\2021-2c-Clase-3-MVC.csproj", "{643A1A55-AE34-4F0B-B12F-DCD616C8C996}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "2021-2c-Clase-3-MVC", "2021-2c-Clase-3-MVC\2021-2c-Clase-3-MVC.csproj", "{643A1A55-AE34-4F0B-B12F-DCD616C8C996}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "2021-2c-Clase-3-MVC.Servicios", "2021-2c-Clase-3-MVC.Servicios\2021-2c-Clase-3-MVC.Servicios.csproj", "{E91A2608-36C6-49D1-9FE9-128C934027AB}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "2021-2c-Clase-3-MVC.Servicios", "2021-2c-Clase-3-MVC.Servicios\2021-2c-Clase-3-MVC.Servicios.csproj", "{E91A2608-36C6-49D1-9FE9-128C934027AB}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

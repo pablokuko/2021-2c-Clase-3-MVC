@@ -72,5 +72,17 @@ namespace _2021_2c_Clase_3_MVC.Controllers {
 
 			return Redirect("Index");
 		}
+
+		[Route("/zodiaco/cualesmisigno/{day:int}/{month:int}")]
+		public IActionResult CualEsMiSigno(int day, int month) {
+			DateTime date;
+
+			if (!DateTime.TryParse($"{day}/{month}/2021", out date)) {
+				ViewBag.SignError = "La fecha ingresada no es valida, intente nuevamente.";
+				return View();
+			}
+
+			return View(SignosServicio.GetSignoBy(date));
+		}
 	}
 }
