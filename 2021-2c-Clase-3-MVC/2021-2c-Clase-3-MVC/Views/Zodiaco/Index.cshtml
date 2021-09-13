@@ -8,7 +8,7 @@
 <ul>
     @foreach (var signo in Model)
     {
-        <li><a href="@signo.Url">@signo.Nombre</a></li>
+        <li><a href="@signo.Url">@signo.Nombre</a> <a href="/Zodiaco/Borrar" value="@signo">Borrar</a></li>
     }
 </ul>
 

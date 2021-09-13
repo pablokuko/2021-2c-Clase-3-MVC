@@ -39,6 +39,25 @@ namespace _2021_2c_Clase_3_MVC.Controllers
             return Redirect("Index");
         }
 
+
+        [HttpGet]
+        public IActionResult Borrar(Signo signo)
+        {
+            
+            try
+            {
+                SignosServicio.Borrar(signo);
+            }
+            catch (SignoExistenteException ex)
+            {
+                ViewBag.Mensaje = ex.Message;
+                return View(signo);
+            }
+
+            return Redirect("Index");
+            
+        }
+
         [HttpGet]
         public IActionResult NuevoConBindingAutomaticoInd()
         {

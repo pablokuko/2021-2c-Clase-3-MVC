@@ -33,5 +33,10 @@ namespace _2021_2c_Clase_3_MVC.Servicios.Zodiaco
 
             Lista.Add(signo);
         }
+
+        public static void Borrar(Signo signo) 
+        {          
+            Lista.Remove(signo);           
+        }
     }
 }
