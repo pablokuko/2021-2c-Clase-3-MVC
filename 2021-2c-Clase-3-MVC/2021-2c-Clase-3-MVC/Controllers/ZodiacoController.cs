@@ -11,6 +11,12 @@ namespace _2021_2c_Clase_3_MVC.Controllers {
 	public class ZodiacoController : Controller {
 		// GET: ZodiacoController
 		public IActionResult Index() {
+			if (TempData["SignDeleted"] != null)
+				ViewBag.SignDeleted = TempData["SignDeleted"].ToString();
+
+			if (TempData["ErrorDeletingSign"] != null)
+				ViewBag.ErrorDeletingSign = TempData["ErrorDeletingSign"].ToString();
+
 			return View(SignosServicio.ObtenerTodosCronologicamente());
 		}
 
@@ -83,6 +89,16 @@ namespace _2021_2c_Clase_3_MVC.Controllers {
 			}
 
 			return View(SignosServicio.GetSignoBy(date));
+		}
+
+		public IActionResult Eliminar(int id) {
+			if (SignosServicio.DeleteSignBy(id)) {
+				TempData["SignDeleted"] = "Signo eliminado correctamente.";
+			} else {
+				TempData["ErrorDeletingSign"] = "Ocurrio un error al intentar eliminar el signo, intente nuevamente.";
+			}
+
+			return Redirect("/zodiaco");
 		}
 	}
 }

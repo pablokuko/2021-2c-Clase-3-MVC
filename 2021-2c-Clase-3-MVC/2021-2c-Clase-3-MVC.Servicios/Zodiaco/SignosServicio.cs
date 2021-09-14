@@ -30,7 +30,6 @@ namespace _2021_2c_Clase_3_MVC.Servicios.Zodiaco {
 			new Signo(){ Id = 12, Nombre = "Sagitario", FechaInicio = new DateTime(2021, 11, 23), FechaFin = new DateTime(2021, 12, 21), Url = "https://es.wikipedia.org/wiki/Sagitario_(constelaci%C3%B3n)"},
 		};
 
-
 		public static List<Signo> ObtenerTodosCronologicamente() {
 			return Lista.OrderBy(o => o.FechaInicio).ToList();
 		}
@@ -55,6 +54,10 @@ namespace _2021_2c_Clase_3_MVC.Servicios.Zodiaco {
 			}
 
 			return Result;
+		}
+
+		public static bool DeleteSignBy(int id) {
+			return Lista.Remove(Lista.Find(sign => sign.Id == id));
 		}
 	}
 }
