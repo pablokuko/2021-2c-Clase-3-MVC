@@ -1,0 +1,10 @@
+﻿@model _2021_2c_Clase_3_MVC.Servicios.Zodiaco.Signo
+@{
+    ViewData["Title"] = "CualEsMiSigno";
+}
+
+@if (@Model?.Nombre != null) {
+    <h1 class="text-center mt-5">Su signo es <a href="@Model?.Url" target="_blank">@Model?.Nombre</a></h1>
+}
+
+<h1 class="text-center mt-5">@ViewBag?.SignError</h1>
