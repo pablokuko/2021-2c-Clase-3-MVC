@@ -41,17 +41,17 @@ namespace _2021_2c_Clase_3_MVC.Controllers
 
 
         [HttpGet]
-        public IActionResult Borrar(Signo signo)
+        public IActionResult Borrar(int id)
         {
             
             try
             {
-                SignosServicio.Borrar(signo);
+                SignosServicio.Borrar(id);
             }
             catch (SignoExistenteException ex)
             {
                 ViewBag.Mensaje = ex.Message;
-                return View(signo);
+                //return View("");
             }
 
             return Redirect("Index");
