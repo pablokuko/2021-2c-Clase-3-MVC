@@ -5,10 +5,16 @@
 @{
 }
 
-<ul>
+<h2 class="text-center mb-4">@ViewBag?.ErrorAlEliminarSigno</h2>
+<h2 class="text-center mb-4">@ViewBag?.SignoEliminado</h2>
+
+<ul class="col-3">
     @foreach (var signo in Model)
     {
-        <li><a href="@signo.Url">@signo.Nombre</a></li>
+        <li class="mb-2 d-flex justify-content-between">
+            <a href="@signo.Url">@signo.Nombre</a>
+            <a class="btn btn-sm btn-danger ml-3" href="/zodiaco/eliminar/@signo.Id">Eliminar</a>
+        </li>
     }
 </ul>
 

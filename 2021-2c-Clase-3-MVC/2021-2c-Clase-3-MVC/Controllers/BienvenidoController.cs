@@ -7,19 +7,19 @@ using System.Threading.Tasks;
 
 namespace _2021_2c_Clase_3_MVC.Controllers
 {
-    public class BienvenidoController : Controller
-    {
-        private readonly ILogger<HomeController> _logger;
+	public class BienvenidoController : Controller
+	{
+		private readonly ILogger<HomeController> _logger;
 
-        public BienvenidoController(ILogger<HomeController> logger)
-        {
-            _logger = logger;
-        }
+		public BienvenidoController(ILogger<HomeController> logger)
+		{
+			_logger = logger;
+		}
 
-        public IActionResult Index()
-        {
-            return View();
-        }
+		public IActionResult Index()
+		{
+			return View();
+		}
 
-    }
+	}
 }
