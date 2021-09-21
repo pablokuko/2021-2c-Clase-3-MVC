@@ -63,7 +63,7 @@ namespace _2021_2c_Clase_3_MVC.Servicios.Zodiaco
 			return Result;
 		}
 
-		public static bool DeleteSignBy(int id)
+		public static bool EliminarSignoPor(int id)
 		{
 			return Lista.Remove(Lista.Find(sign => sign.Id == id));
 		}
