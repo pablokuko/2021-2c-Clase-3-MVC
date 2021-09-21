@@ -4,8 +4,10 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace _2021_2c_Clase_3_MVC.Servicios.Zodiaco {
-	public class SignosServicio {
+namespace _2021_2c_Clase_3_MVC.Servicios.Zodiaco
+{
+	public class SignosServicio
+	{
 		private static List<Signo> Lista { get; set; } = new List<Signo>() {
             /*
              * Aries, Tauro, Géminis, Cáncer, Leo, Virgo, Libra, Escorpión, Sagitario, Capricornio, Acuario y Piscis
@@ -30,11 +32,13 @@ namespace _2021_2c_Clase_3_MVC.Servicios.Zodiaco {
 			new Signo(){ Id = 12, Nombre = "Sagitario", FechaInicio = new DateTime(2021, 11, 23), FechaFin = new DateTime(2021, 12, 21), Url = "https://es.wikipedia.org/wiki/Sagitario_(constelaci%C3%B3n)"},
 		};
 
-		public static List<Signo> ObtenerTodosCronologicamente() {
+		public static List<Signo> ObtenerTodosCronologicamente()
+		{
 			return Lista.OrderBy(o => o.FechaInicio).ToList();
 		}
 
-		public static void Agregar(Signo signo) {
+		public static void Agregar(Signo signo)
+		{
 			if (Lista.Any(o => string.Equals(o.Nombre?.Trim(), signo.Nombre?.Trim(), StringComparison.OrdinalIgnoreCase)))
 				throw new SignoExistenteException($"Ya existe un signo con el nombre {signo.Nombre}");
 
@@ -43,12 +47,15 @@ namespace _2021_2c_Clase_3_MVC.Servicios.Zodiaco {
 			Lista.Add(signo);
 		}
 
-		public static Signo GetSignoBy(DateTime date) {
+		public static Signo GetSignoBy(DateTime date)
+		{
 			Signo Result = new Signo();
 
-			foreach (Signo Signo in ListaCompleta) {
+			foreach (Signo Signo in ListaCompleta)
+			{
 				if ((Signo.FechaInicio.Month == date.Month && date.Day >= Signo.FechaInicio.Day)
-					|| (Signo.FechaFin.Month == date.Month && date.Day <= Signo.FechaFin.Day)) {
+					|| (Signo.FechaFin.Month == date.Month && date.Day <= Signo.FechaFin.Day))
+				{
 					Result = Signo;
 				}
 			}
@@ -56,7 +63,8 @@ namespace _2021_2c_Clase_3_MVC.Servicios.Zodiaco {
 			return Result;
 		}
 
-		public static bool DeleteSignBy(int id) {
+		public static bool EliminarSignoPor(int id)
+		{
 			return Lista.Remove(Lista.Find(sign => sign.Id == id));
 		}
 	}

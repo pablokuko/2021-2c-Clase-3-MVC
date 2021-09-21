@@ -7,29 +7,37 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace _2021_2c_Clase_3_MVC.Controllers {
-	public class ZodiacoController : Controller {
+namespace _2021_2c_Clase_3_MVC.Controllers
+{
+	public class ZodiacoController : Controller
+	{
 		// GET: ZodiacoController
-		public IActionResult Index() {
-			if (TempData["SignDeleted"] != null)
-				ViewBag.SignDeleted = TempData["SignDeleted"].ToString();
+		public IActionResult Index()
+		{
+			if (TempData["SignoEliminado"] != null)
+				ViewBag.SignoEliminado = TempData["SignoEliminado"].ToString();
 
-			if (TempData["ErrorDeletingSign"] != null)
-				ViewBag.ErrorDeletingSign = TempData["ErrorDeletingSign"].ToString();
+			if (TempData["ErrorAlEliminarSigno"] != null)
+				ViewBag.ErrorAlEliminarSigno = TempData["ErrorAlEliminarSigno"].ToString();
 
 			return View(SignosServicio.ObtenerTodosCronologicamente());
 		}
 
 		[HttpGet]
-		public IActionResult Nuevo() {
+		public IActionResult Nuevo()
+		{
 			return View();
 		}
 
 		[HttpPost]
-		public IActionResult Nuevo(Signo signo) {
-			try {
+		public IActionResult Nuevo(Signo signo)
+		{
+			try
+			{
 				SignosServicio.Agregar(signo);
-			} catch (SignoExistenteException ex) {
+			}
+			catch (SignoExistenteException ex)
+			{
 				ViewBag.Mensaje = ex.Message;
 				return View(signo);
 			}
@@ -38,16 +46,21 @@ namespace _2021_2c_Clase_3_MVC.Controllers {
 		}
 
 		[HttpGet]
-		public IActionResult NuevoConBindingAutomaticoInd() {
+		public IActionResult NuevoConBindingAutomaticoInd()
+		{
 			return View();
 		}
 
 		[HttpPost]
-		public IActionResult NuevoConBindingAutomaticoInd(string Nombre, DateTime FechaInicio, DateTime FechaFin, string Url) {
+		public IActionResult NuevoConBindingAutomaticoInd(string Nombre, DateTime FechaInicio, DateTime FechaFin, string Url)
+		{
 			Signo signo = new Signo() { Nombre = Nombre, FechaFin = FechaFin, FechaInicio = FechaInicio, Url = Url };
-			try {
+			try
+			{
 				SignosServicio.Agregar(signo);
-			} catch (SignoExistenteException ex) {
+			}
+			catch (SignoExistenteException ex)
+			{
 				ViewBag.Mensaje = ex.Message;
 				return View(signo);
 			}
@@ -57,21 +70,27 @@ namespace _2021_2c_Clase_3_MVC.Controllers {
 
 
 		[HttpGet]
-		public IActionResult NuevoBindingManual() {
+		public IActionResult NuevoBindingManual()
+		{
 			return View();
 		}
 
 		[HttpPost]
-		public IActionResult NuevoBindingManualPost() {
-			Signo signo = new Signo() {
+		public IActionResult NuevoBindingManualPost()
+		{
+			Signo signo = new Signo()
+			{
 				Nombre = Request.Form["Nombre"],
 				FechaFin = DateTime.Parse(Request.Form["FechaFin"]),
 				FechaInicio = DateTime.Parse(Request.Form["FechaInicio"]),
 				Url = Request.Form["Url"]
 			};
-			try {
+			try
+			{
 				SignosServicio.Agregar(signo);
-			} catch (SignoExistenteException ex) {
+			}
+			catch (SignoExistenteException ex)
+			{
 				ViewBag.Mensaje = ex.Message;
 				return View(signo);
 			}
@@ -80,10 +99,12 @@ namespace _2021_2c_Clase_3_MVC.Controllers {
 		}
 
 		[Route("/zodiaco/cualesmisigno/{day:int}/{month:int}")]
-		public IActionResult CualEsMiSigno(int day, int month) {
+		public IActionResult CualEsMiSigno(int day, int month)
+		{
 			DateTime date;
 
-			if (!DateTime.TryParse($"{day}/{month}/2021", out date)) {
+			if (!DateTime.TryParse($"{day}/{month}/2021", out date))
+			{
 				ViewBag.SignError = "La fecha ingresada no es valida, intente nuevamente.";
 				return View();
 			}
@@ -91,11 +112,15 @@ namespace _2021_2c_Clase_3_MVC.Controllers {
 			return View(SignosServicio.GetSignoBy(date));
 		}
 
-		public IActionResult Eliminar(int id) {
-			if (SignosServicio.DeleteSignBy(id)) {
-				TempData["SignDeleted"] = "Signo eliminado correctamente.";
-			} else {
-				TempData["ErrorDeletingSign"] = "Ocurrio un error al intentar eliminar el signo, intente nuevamente.";
+		public IActionResult Eliminar(int id)
+		{
+			if (SignosServicio.EliminarSignoPor(id))
+			{
+				TempData["SignoEliminado"] = "Signo eliminado correctamente.";
+			}
+			else
+			{
+				TempData["ErrorAlEliminarSigno"] = "Ocurrio un error al intentar eliminar el signo, intente nuevamente.";
 			}
 
 			return Redirect("/zodiaco");
